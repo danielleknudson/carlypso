@@ -2,6 +2,8 @@
 Carlypso coding challenge
 
 # Development
-- Clone the repo
+- git clone https://github.com/danielleknudson/carlypso.git
+- cd carlypso
 - npm install
 - gulp
+- go to http://localhost:8080
