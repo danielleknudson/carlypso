@@ -1,1 +1,1 @@
-var carlypso = angular.module('carlypso', ['ngRoute']);
+var carlypso = angular.module('carlypso', ['ngRoute', 'ui.bootstrap', 'ui.bootstrap.tpls']);

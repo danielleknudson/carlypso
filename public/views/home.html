@@ -2,4 +2,5 @@
   {{ scope.test }}
   {{ scope.count.value }} 
   <div ng-repeat="listing in scope.listings">{{ listing.year }}</div>
+  <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination>
 </div>

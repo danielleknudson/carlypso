@@ -1,6 +1,7 @@
 carlypso.controller('HomeController', function ($scope, $q, API) {
   $scope.scope = {};
   $scope.scope.test = "Testing Angular Routing";
+  $scope.scope.currentPage = 0;
   $scope.scope.getCount = function () {
     return $q(function (resolve, reject) {
       API.getListingsCount().then(function (result) {
@@ -20,7 +21,18 @@ carlypso.controller('HomeController', function ($scope, $q, API) {
     });
   };
 
+  $scope.scope.getNextPage = function () {
+    var offset = $scope.scope.currentPage * 100;
+    var count = 20;
+    return $q(function (resolve, reject) {
+      API.getListings(offset, count).then(function (result) {
+        var listings = JSON.parse(result);
+        $scope.$apply($scope.scope.listings = listings.value);
+        return resolve($scope.scope.listings);
+      });
+    });
+  }
   $scope.scope.getCount();
-  $scope.scope.getListings(0, 100);
+  $scope.scope.getListings(0, 20);
 
 });
