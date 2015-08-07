@@ -1,7 +1,7 @@
 carlypso.controller('HomeController', function ($scope, $q, API) {
   $scope.scope = {};
   $scope.scope.test = "Testing Angular Routing";
-  $scope.scope.currentPage = 0;
+  $scope.scope.currentPage = 1;
   $scope.scope.getCount = function () {
     return $q(function (resolve, reject) {
       API.getListingsCount().then(function (result) {
@@ -22,10 +22,15 @@ carlypso.controller('HomeController', function ($scope, $q, API) {
   };
 
   $scope.scope.getNextPage = function () {
-    var offset = $scope.scope.currentPage * 100;
-    var count = 20;
+
+    if ($scope.scope.currentPage === 1) {
+      offset = 0;
+    } else {
+      offset = ($scope.scope.currentPage - 1) * 20;
+    }
+
     return $q(function (resolve, reject) {
-      API.getListings(offset, count).then(function (result) {
+      API.getListings(offset, 20).then(function (result) {
         var listings = JSON.parse(result);
         $scope.$apply($scope.scope.listings = listings.value);
         return resolve($scope.scope.listings);
