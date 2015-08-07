@@ -1,0 +1,1 @@
+var carlypso = angular.module('carlypso', ['ngRoute']);
