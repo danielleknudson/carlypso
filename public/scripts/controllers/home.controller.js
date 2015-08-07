@@ -1,6 +1,5 @@
 carlypso.controller('HomeController', function ($scope, $q, API) {
   $scope.scope = {};
-  $scope.scope.test = "Testing Angular Routing";
   $scope.scope.currentPage = 1;
   $scope.scope.getCount = function () {
     return $q(function (resolve, reject) {

@@ -1,0 +1,70 @@
+body {
+  font-family: 'Roboto', "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  color: #333;
+  background: #f8f9fa;
+}
+
+.container-fluid {
+  padding: 50px;
+}
+
+h5 {
+  font-weight: 400;
+}
+
+input.search {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  border: 1px solid #eef0f3;
+  padding: 3px 2px;
+  padding-left: 5px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.img {
+  height: 80px;
+  width: 80px;
+  float: left;
+  margin-right: 10px;
+}
+.img img {
+  width: 100%;
+  border-radius: 2px;
+}
+
+.carListing {
+  background: #FFFFFF;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #eef0f3;
+  border-radius: 2px;
+}
+
+.carMake .carModel {
+  font-size: 16px;
+}
+
+.label {
+  color: #222;
+  padding: 0;
+  margin-right: 3px;
+  font-size: 12px;
+}
+
+.carListing {
+  padding: 20px;
+}
+
+.carInfo span.make span.model {
+  display: inline-block;
+  margin-right: 2px;
+}
+
+span.price {
+  display: inline-block;
+  float: right;
+  font-size: 15px;
+}

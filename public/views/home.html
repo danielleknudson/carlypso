@@ -1,6 +1,37 @@
-<div> 
-  {{ scope.test }}
-  {{ scope.count.value }} 
-  <div ng-repeat="listing in scope.listings">{{ listing.year }}</div>
-  <pagination total-items="scope.count.value" items-per-page="20" ng-change="scope.getNextPage()" ng-model="scope.currentPage" max-size="5" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+<div class="row"> 
+  <div class="col-xs-12">
+    <h4>Welcome! Browse through some car listings to find the perfect one for you.</h4>
+    <h5><span class="label">Total Listings:</span> {{ scope.count.value }} </h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-5">
+  <input class="search" type="text" placeholder="Search by make, model, year, or color..." ng-model="scope.search" />
+    <ul>
+      <li ng-repeat="listing in scope.listings | filter:scope.search | orderBy: listing.year" class="carListing">
+        <div class="img">
+          <img src="assets/muscle_car.jpg">
+        </div>
+        <div class="carInfo">
+          <span class="make">{{ listing.make }}</span>
+          <span class="model">{{ listing.model }}</span>
+          <span class="year">{{ listing.year }}</span>
+        </div>
+        <div class="carPrice">
+          <span class="price">${{ listing.price }}</span>
+        </div>
+        <div class="carStyle">
+          <span class="color"><span class="label">Color:</span>{{ listing.color }}</span>
+          <span class="body"><span class="label">Body:</span>{{ listing.body }}</span>
+          <span class="trim"><span class="label">Trim:</span>{{ listing.trim }}</span>
+          
+        </div>
+        <div class="carCondition">
+          <span class="condition"><span class="label">Condition:</span>{{ listing.condition }}</span>
+          <span class="odometer"><span class="label">Odometer:</span>{{ listing.odometer }}</span>
+        </div>
+      </li>
+    </ul>
+    <pagination total-items="scope.count.value" items-per-page="20" ng-change="scope.getNextPage()" ng-model="scope.currentPage" max-size="5" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+  </div>
 </div>
