@@ -2,21 +2,19 @@ carlypso.controller('HomeController', function ($scope, $q, API) {
   $scope.scope = {};
   $scope.scope.currentPage = 1;
   $scope.scope.getCount = function () {
-    return $q(function (resolve, reject) {
-      API.getListingsCount().then(function (result) {
-        var count = JSON.parse(result);
-        $scope.$apply($scope.scope.count = count);
-        return resolve($scope.scope.count);
-      });
+    return API.getListingsCount() 
+    .then(function (res) {
+      $scope.scope.count = res;
+    }, function (err) {
+      return err;
     })
   };
   $scope.scope.getListings = function (offset, count) {
-    return $q(function (resolve, reject) {
-      API.getListings(offset, count).then(function (result) {
-        var listings = JSON.parse(result);
-        $scope.$apply($scope.scope.listings = listings.value);
-        return resolve($scope.scope.listings);
-      });
+    return API.getListings(offset, count)
+    .then(function (res) {
+      $scope.scope.listings = res;
+    }, function (err) {
+      return err;
     });
   };
 
@@ -28,14 +26,14 @@ carlypso.controller('HomeController', function ($scope, $q, API) {
       offset = ($scope.scope.currentPage - 1) * 20;
     }
 
-    return $q(function (resolve, reject) {
-      API.getListings(offset, 20).then(function (result) {
-        var listings = JSON.parse(result);
-        $scope.$apply($scope.scope.listings = listings.value);
-        return resolve($scope.scope.listings);
-      });
-    });
-  }
+    return API.getListings(offset, 20)
+    .then(function (res) {
+      $scope.scope.listings = res;
+    }, function (err) {
+      return err;
+    })
+
+  };
   $scope.scope.getCount();
   $scope.scope.getListings(0, 20);
 
